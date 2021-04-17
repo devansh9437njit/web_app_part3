@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles/home.css') }}">
+<body>
+    <h1>Mark Sheet</h1>
+    <button><a href="/stats">Class Stats</a></button>
+
+
+    <button><a href="/new">Create New Record</a></button>
+
+    <div class="container">
+        {% for e in data %}
+        <div class="item">
+            <p><strong>Name:</strong> {{ e[1] }} {{ e[0] }}</p>
+            <p><strong>Phone:</strong> {{ e[2] }}</p>
+
+            <p><strong>Test 1 Marks:</strong> {{ e[3] }}</p>
+            <p><strong>Test 2 Marks:</strong> {{ e[4] }}</p>
+            <p><strong>Test 3 Marks:</strong> {{ e[5] }}</p>
+            <p><strong>Test 4 Marks:</strong> {{ e[6] }}</p>
+
+            <p><strong>Final Marks:</strong> {{ e[7] }}</p>
+
+            <p><strong>Grade:</strong> {{ e[8] }}</p>
+
+            <button class="del-button">
+                <a href="/delete/{{e[2]}}">Delete</a>
+            </button>
+
+        </div>
+        {% endfor %}
+
+
+        
+    </div>
+
+</body>
+
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 2%;
+        column-gap: 2%;
+        padding-bottom: 100px;
+    }
+
+    .item {
+        align-items: center;
+        padding: 3%;
+        border: 3px solid black;
+    }
+
+    .item p:hover {
+        transform: scale(1.05);
+        cursor: default;
+    }
+
+    button{
+        margin: 1%;
+    }
+</style>
